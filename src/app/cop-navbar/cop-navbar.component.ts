@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarModule } from 'ng-sidebar';
+
 
 @Component({
   selector: 'app-cop-navbar',
@@ -7,8 +7,9 @@ import { SidebarModule } from 'ng-sidebar';
   styleUrls: ['./cop-navbar.component.scss']
 })
 export class CopNavbarComponent implements OnInit {
+  
 
-  constructor(private ngsidebar: SidebarModule ) { }
+  constructor( ) { }
 
   ngOnInit() {
   }

@@ -17,7 +17,11 @@ import { PropertyInspectorComponent } from './property-inspector/property-inspec
 import { SpectrumDisplayViewComponent } from './spectrum-display-view/spectrum-display-view.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { CopNavbarComponent } from './cop-navbar/cop-navbar.component';
- 
+
+
+import { ViewsService } from './views.service';
+
+
 
 @NgModule({
   declarations: [
