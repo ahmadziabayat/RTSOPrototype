@@ -42,7 +42,7 @@ import { ViewsService } from './views.service';
     SidebarModule.forRoot(),
     AngularSplitModule.forRoot()
   ],
-  providers: [],
+  providers: [ViewsService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

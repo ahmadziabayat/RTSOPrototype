@@ -17,11 +17,11 @@
           Views
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="[]"  (click)="toggleParticipants()">Participants View</a>
-          <a class="dropdown-item" href="#">planning board View</a>
+          <button class="dropdown-item"  (click)="changeParticipants(action.isVisibleParticipants)">Participants View</button>
+          <button class="dropdown-item" (click)="changePlanningView(action.isVisiblePlanningBoard)">planning board View</button>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Property Inspector</a>
-          <a class="dropdown-item" href="#">Spectrum-display</a>
+          <a class="dropdown-item" (click)="changePropertyInpector(action.isVisiblePropertyInspector)">Property Inspector</a>
+          <a class="dropdown-item" (click)="changeSpectrumDisplay(action.isVisibleSpectrumDisplay)">Spectrum-display</a>
         </div>
       </li>
     </ul>

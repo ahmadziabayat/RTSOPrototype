@@ -1,10 +1,12 @@
-import { Injectable, EventEmitter, Output } from '@angular/core';
+import { Injectable, EventEmitter, Output, Input } from '@angular/core';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ViewsService {
-
+   
+  
   action = {
     isVisibleParticipantsSize: 15,
     isVisiblePlanningBoardSize: 70,
@@ -14,36 +16,17 @@ export class ViewsService {
     isVisiblePlanningBoard: true,
     isVisiblePropertyInspector: true,
     isVisibleSpectrumDisplay: true,
-    isPresentA: true,
-    isPresentB: true,
-    isPresentC: true,
     useTransition: true,
     logs: ''
 }
 
-  @Output() showParticipants: EventEmitter<any> = new EventEmitter();
-  @Output() hideParticipants: EventEmitter<any> = new EventEmitter();
+private isVisible = new BehaviorSubject<boolean>(this.action.isVisibleParticipants);
 
-  toggleParticipants(){
-    console.log('start toggle');
-    this.action.isVisibleParticipants = !this.action.isVisibleParticipants;
-    console.log("check: "+this.action.isVisibleParticipants);
-    if(this.action.isVisibleParticipants){
-      this.showParticipants.emit(null);
-    }else{
-      this.hideParticipants.emit(null);
-    }
-    console.log('end');
-  }
+currentVisible = this.isVisible.asObservable();
 
-  constructor() { }
+
+constructor() { }
 
 
 
-
-
-
-log(eventName, e) {
-    this.action.logs = `${ new Date() }: ${ eventName } > ${ e }\n${ this.action.logs }`;
-}
 }

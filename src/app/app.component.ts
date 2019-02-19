@@ -1,5 +1,20 @@
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, Input, OnInit , ViewChild, AfterViewInit  } from '@angular/core';
+import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { ViewsService } from './views.service';
+import { Subscription } from 'rxjs';
+
+export interface Action {
+  isVisibleParticipantsSize: number,
+  isVisiblePlanningBoardSize: number,
+  isVisiblePropertyInspectorSize: number,
+  isVisibleSpectrumDisplaySize: number,
+  isVisibleParticipants: boolean,
+  isVisiblePlanningBoard: boolean,
+  isVisiblePropertyInspector: boolean,
+  isVisibleSpectrumDisplay: boolean,
+  useTransition: boolean,
+  logs: string
+}
 
 @Component({
   selector: 'app-root',
@@ -8,30 +23,40 @@ import { ViewsService } from './views.service';
   styleUrls: ['./app.component.scss'],
   providers:  [ ViewsService ]
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
+
   title = 'RTSOPrototype';
 
-  constructor(private viewService: ViewsService ) { }
+  isVisibleParticipants: boolean;
+  subscription: Subscription;
 
-  action = this.viewService.action;
+  @Input() action = this.viewService.action;
 
-//   action = {
-//     isVisibleParticipantsSize: 15,
-//     isVisiblePlanningBoardSize: 70,
-//     isVisiblePropertyInspectorSize: 15,
-//     isVisibleSpectrumDisplaySize: 25,
-//     isVisibleParticipants: true,
-//     isVisiblePlanningBoard: true,
-//     isVisiblePropertyInspector: true,
-//     isVisibleSpectrumDisplay: true,
-//     isPresentA: true,
-//     isPresentB: true,
-//     isPresentC: true,
-//     useTransition: true,
-//     logs: ''
-// }
+  constructor(private viewService: ViewsService ) {
+ 
+  }
 
-// log(eventName, e) {
-//     this.action.logs = `${ new Date() }: ${ eventName } > ${ e }\n${ this.action.logs }`;
-// }
+  ngOnInit() {
+
+   }
+
+   disabledEnabledParticipants($event: boolean) {
+    this.action.isVisibleParticipants = $event
+  }
+
+  disabledEnabledPlanning($event: boolean) {
+    this.action.isVisiblePlanningBoard = $event
+  }
+
+  disabledEnabledPropertyInspector($event: boolean) {
+    this.action.isVisiblePropertyInspector = $event
+  }
+
+  disabledEnabledSpectrumDisplay($event: boolean) {
+    this.action.isVisibleSpectrumDisplay = $event
+  }
+
+ 
+
+   
 }

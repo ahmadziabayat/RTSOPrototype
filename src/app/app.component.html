@@ -5,27 +5,32 @@
   </h1>
 </div>
 
-<app-menu-bar></app-menu-bar>
+<app-menu-bar  (visibleParticipant)="disabledEnabledParticipants($event)"
+               (visiblePlanningBoard)="disabledEnabledPlanning($event)"
+               (visibleProperty)="disabledEnabledPropertyInspector($event)"
+               (visibleSpectrumDisplay)="disabledEnabledSpectrumDisplay($event)">
+
+</app-menu-bar>
 
 
 <div style="width: 100%; height: 100%; background: yellow;">
   <as-split direction="vertical">
    
     <as-split-area size="75" class="bg-info text-dark">
-        <as-split direction="horizontal"   [useTransition]="action.useTransition">
-              <as-split-area  [visible]="action.isVisibleParticipants" [order]="0" size="action.isVisibleParticipantsSize">
-                  <as-split direction="vertical" [useTransition]="true">
+        <as-split direction="horizontal" [useTransition]="action.useTransition">
+              <as-split-area  [visible]="action.isVisibleParticipants" [size]="action.isVisibleParticipantsSize" [order]="0" >
+                  <as-split direction="vertical" [useTransition]="true"> {{action.isVisibleParticipants}}
                      <app-participants-view></app-participants-view>
                   </as-split>
               </as-split-area>
                           
-              <as-split-area  [visible]="action.isVisiblePlanningBoard" [order]="1"  size="isVisiblePlanningBoardSize">                        
+              <as-split-area  [visible]="action.isVisiblePlanningBoard" [order]="1"  [size]="action.isVisiblePlanningBoardSize">                        
                 <as-split direction="vertical" [useTransition]="true"> 
                     <app-planning-board-view></app-planning-board-view>
               </as-split>                                           
               </as-split-area>
 
-              <as-split-area [visible]="action.isVisiblePropertyInspector" [order]="2" size="isVisiblePropertyInspectorSize">
+              <as-split-area [visible]="action.isVisiblePropertyInspector" [order]="2" [size]="action.isVisiblePropertyInspectorSize">
                   <as-split direction="vertical" [useTransition]="true">
                       <app-property-inspector></app-property-inspector>
                   </as-split>
@@ -34,7 +39,7 @@
     </as-split-area> <!--end of split area for 80% of page-->
  
     <!--Splite area for Inspectrum -->
-    <as-split-area class="bg-info text-dark" [visible]="action.isVisibleSpectrumDisplay" [order]="3" size="isVisibleSpectrumDisplaySize"> 
+    <as-split-area class="bg-info text-dark" [visible]="action.isVisibleSpectrumDisplay" [order]="3" [size]="action.isVisibleSpectrumDisplaySize"> 
       <app-spectrum-display-view></app-spectrum-display-view>
     </as-split-area>
 
@@ -55,6 +60,9 @@
           <label class="btn btn-warning" 
               [class.active]="!action.isVisibleSpectrumDisplay" 
               (click)="action.isVisibleSpectrumDisplay = !action.isVisibleSpectrumDisplay">{{ 'SpectrumDisplay: ' + action.isVisibleSpectrumDisplay }}</label>
+              <label class="btn btn-warning" 
+              
+              (click)="toggleParticipants()">button</label>
       </div>
   </div>
 
