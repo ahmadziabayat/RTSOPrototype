@@ -1,5 +1,4 @@
 import { Component, ChangeDetectionStrategy, Input, OnInit , ViewChild, AfterViewInit  } from '@angular/core';
-import { MenuBarComponent } from './menu-bar/menu-bar.component';
 import { ViewsService } from './views.service';
 import { Subscription } from 'rxjs';
 

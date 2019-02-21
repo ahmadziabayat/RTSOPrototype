@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { FormsModule } from '@angular/forms';
 
 
 import { SidebarModule } from 'ng-sidebar';
@@ -17,6 +18,8 @@ import { PropertyInspectorComponent } from './property-inspector/property-inspec
 import { SpectrumDisplayViewComponent } from './spectrum-display-view/spectrum-display-view.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { CopNavbarComponent } from './cop-navbar/cop-navbar.component';
+
+import { AngularEsriModule } from 'angular-esri-components';
 
 
 import { ViewsService } from './views.service';
@@ -39,8 +42,11 @@ import { ViewsService } from './views.service';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    AngularEsriModule,
     SidebarModule.forRoot(),
-    AngularSplitModule.forRoot()
+    AngularSplitModule.forRoot(),
+    
   ],
   providers: [ViewsService],
   bootstrap: [AppComponent]

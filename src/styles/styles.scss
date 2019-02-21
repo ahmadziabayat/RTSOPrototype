@@ -4,6 +4,19 @@
 @import 'utils/variables';
 @import 'utils/core';
 
+
+html, body {
+
+  font-family: 'Roboto', sans-serif;
+
+  height: 100%;
+
+  margin: 2px;
+
+  padding: 2px;
+
+}
+
 .loading {
   padding: 1em;
 }

@@ -1,37 +1,29 @@
 <ng-sidebar-container  
 (onBackdropClicked)="_onBackdropClicked()">
-  <ng-sidebar
-  [(opened)]="_opened"
-  [mode]="_MODES[_modeNum]"
-  [keyClose]="_keyClose"
-  [position]="_POSITIONS[_positionNum]"
-  [dock]="_dock"
-  [dockedSize]="'50px'"
-  [autoCollapseHeight]="_autoCollapseHeight"
-  [autoCollapseWidth]="_autoCollapseWidth"
-  [closeOnClickOutside]="_closeOnClickOutside"
-  [closeOnClickBackdrop]="_closeOnClickBackdrop"
-  [showBackdrop]="_showBackdrop"
-  [animate]="_animate"
-  [trapFocus]="_trapFocus"
-  [autoFocus]="_autoFocus"
-  [sidebarClass]="'demo-sidebar'"
-  [ariaLabel]="'My sidebar'"
-  (onOpenStart)="_onOpenStart()"
-  (onOpened)="_onOpened()"
-  (onCloseStart)="_onCloseStart()"
-  (onClosed)="_onClosed()"
-  (onTransitionEnd)="_onTransitionEnd()">
 
-<!-- <p>Sidebar contents</p>
-<button type="button" class="btn btn-primary" (click)="_toggleOpened()">Close sidebar</button>
-<p><a closeSidebar>This will close the sidebar too</a></p>
-<hr>
-<p>Throwup on your pillow.</p>
-<p>Steal the warm chair right after you get up.</p>
-<p>Use lap as chair hide head under blanket.</p>
-<p>Walk on car leaving trail of paw prints on hood.</p>
-<p>Steal the warm chair right after you get up.</p> -->
+<ng-sidebar
+      [(opened)]="_opened"
+      [mode]="_MODES[_modeNum]"
+      [keyClose]="_keyClose"
+      [position]="_POSITIONS[_positionNum]"
+      [dock]="_dock"
+      [dockedSize]="'50px'"
+      [autoCollapseHeight]="_autoCollapseHeight"
+      [autoCollapseWidth]="_autoCollapseWidth"
+      [closeOnClickOutside]="_closeOnClickOutside"
+      [closeOnClickBackdrop]="_closeOnClickBackdrop"
+      [showBackdrop]="_showBackdrop"
+      [animate]="_animate"
+      [trapFocus]="_trapFocus"
+      [autoFocus]="_autoFocus"
+      [sidebarClass]="'demo-sidebar'"
+      [ariaLabel]="'My sidebar'"
+      (onOpenStart)="_onOpenStart()"
+      (onOpened)="_onOpened()"
+      (onCloseStart)="_onCloseStart()"
+      (onClosed)="_onClosed()"
+      (onTransitionEnd)="_onTransitionEnd()">
+
 
 <div class="card" style="width: 18rem;">
     <div class="card-body">
@@ -86,8 +78,6 @@
          <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
         <br>
-  
-   
     </div>
   </div>
 </ng-sidebar>
@@ -96,12 +86,17 @@
   <button (click)="_toggleOpened()" class="demo-header__toggle">Toggle sidebar</button>
   <span>ng-sidebar</span>
 </header>
+
 <section class="demo-contents">
-        <p>
-                property-inspector works!
-              </p>
-  
-  <div>
+
+    <div class="container">
+        <esri-map [mapProperties]="mapProperties" [mapViewProperties]="mapViewProperties" (mapInit)="onMapInit($event)"></esri-map>
+    </div>
+      
+    <img esriCustomWidget position="bottom-right" src="https://images.forbes.com/media/lists/companies/esri_416x416.jpg" width="100">
+    <esri-layers-toggle position="top-right"></esri-layers-toggle>
+
+  <!-- <div>
     <button class="demo-control" (click)="_toggleOpened()">opened ({{_opened}})</button>
     <button class="demo-control" (click)="_toggleMode()">mode ({{_MODES[_modeNum]}})</button>
     <button class="demo-control" (click)="_togglePosition()">position ({{_POSITIONS[_positionNum]}})</button>
@@ -121,7 +116,7 @@
     <button class="demo-control" (click)="_toggleTrapFocus()">trapFocus ({{_trapFocus}})</button>
     <button class="demo-control" (click)="_toggleAutoFocus()">autoFocus ({{_autoFocus}})</button>
     <button class="demo-control" (click)="_toggleKeyClose()">keyClose ({{_keyClose}})</button>
-  </div>
+  </div> -->
   
 </section>
 </div>
@@ -129,7 +124,9 @@
 
 
 
-
-
-
-
+ <!-- <div class="container">
+    <esri-map [mapProperties]="mapProperties" [mapViewProperties]="mapViewProperties" (mapInit)="onMapInit($event)"></esri-map>
+  </div>
+  
+<img esriCustomWidget position="bottom-right" src="https://images.forbes.com/media/lists/companies/esri_416x416.jpg" width="100">
+<esri-layers-toggle position="top-left"></esri-layers-toggle> -->

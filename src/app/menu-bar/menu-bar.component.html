@@ -13,15 +13,28 @@
         <a class="nav-link" href="#">Edit</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Views
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <button class="dropdown-item"  (click)="changeParticipants(action.isVisibleParticipants)">Participants View</button>
-          <button class="dropdown-item" (click)="changePlanningView(action.isVisiblePlanningBoard)">planning board View</button>
+          <!-- Default unchecked -->
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="action.isVisibleParticipants" id="ParticipantsView" (click)="changeParticipants(action.isVisibleParticipants)">
+              <label class="custom-control-label" for="ParticipantsView">Participants View</label>
+          </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="action.isVisiblePlanningBoard" id="PlanningBoardView" (click)="changePlanningView(action.isVisiblePlanningBoard)">
+              <label class="custom-control-label" for="PlanningBoardView">planning board View</label>
+          </div>
           <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="changePropertyInpector(action.isVisiblePropertyInspector)">Property Inspector</a>
-          <a class="dropdown-item" (click)="changeSpectrumDisplay(action.isVisibleSpectrumDisplay)">Spectrum-display</a>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="action.isVisiblePropertyInspector" id="PropertyInspector" (click)="changePropertyInpector(action.isVisiblePropertyInspector)">
+              <label class="custom-control-label" for="PropertyInspector">Property Inspector</label>
+          </div>
+          <div class="custom-control custom-checkbox my-1 mr-sm-2">
+              <input type="checkbox" class="custom-control-input" [(ngModel)]="action.isVisibleSpectrumDisplay" id="SpectrumDisplay" (click)="changeSpectrumDisplay(action.isVisibleSpectrumDisplay)">
+              <label class="custom-control-label" for="SpectrumDisplay">Spectrum Display</label>
+          </div>
         </div>
       </li>
     </ul>
