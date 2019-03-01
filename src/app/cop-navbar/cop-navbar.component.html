@@ -45,26 +45,41 @@
         <hr>
       
         <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" 
-        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            General
-          </button>
+        data-target="#general" aria-expanded="false" aria-controls="general">General</button>
        
         <br>
-        <div class="collapse" id="collapseExample">
+        <div class="collapse" id="general">
             <div class="container">
                
             <label for="Lines">Lines</label>
             <div class="input-group">
-                <label class="radio-inline"><input type="radio" name="optradio" checked>EMI</label>
-                <label class="radio-inline"><input type="radio" name="optradio">Net Connectivity</label>
-                <label class="radio-inline"><input type="radio" name="optradio">None</label>
+                <label class="radio-inline"><input type="radio" name="emi" checked>EMI</label>
+                <label class="radio-inline"><input type="radio" name="netConnectivity">Net Connectivity</label>
+                <label class="radio-inline"><input type="radio" name="none">None</label>
+            </div>
+            <label for="Sources">Preferred Map Source</label>
+            <div class="input-group">
+                <label class="radio-inline"><input type="radio" name="local">Local</label>
+                <label class="radio-inline"><input type="radio" name="remote" checked>Remote</label>
             </div>
           
             </div>
         </div>
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Layers</button>
+        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#layers" 
+        aria-expanded="false" aria-controls="layers">Layers</button>
         <br>
+        <div class="collapse" id="layers">
+          <div class="container">
+             
+          <label for="Lines">Lines</label>
+          <div class="input-group">
+              <label class="radio-inline"><input type="radio" name="optradio" checked>EMI</label>
+              <label class="radio-inline"><input type="radio" name="optradio">Net Connectivity</label>
+              <label class="radio-inline"><input type="radio" name="optradio">None</label>
+          </div>
+        
+          </div>
+      </div>
 
         <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Restrictions Filter</button>

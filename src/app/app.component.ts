@@ -1,6 +1,10 @@
-import { Component, ChangeDetectionStrategy, Input, OnInit , ViewChild, AfterViewInit  } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ElementRef, Input, OnInit , ViewChild, AfterViewInit, OnDestroy,  } from '@angular/core';
 import { ViewsService } from './views.service';
 import { Subscription } from 'rxjs';
+
+import { AngularSplitModule } from 'angular-split';
+
+
 
 export interface Action {
   isVisibleParticipantsSize: number,
@@ -22,40 +26,93 @@ export interface Action {
   styleUrls: ['./app.component.scss'],
   providers:  [ ViewsService ]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
 
   title = 'RTSOPrototype';
 
-  isVisibleParticipants: boolean;
+  // isVisibleParticipants: boolean;
   subscription: Subscription;
 
   @Input() action = this.viewService.action;
+
+  @ViewChild('mySplit') mySplitEl: AngularSplitModule;
+  @ViewChild('logs') logsEl: ElementRef;
+
+  ngAfterViewInit() {
+    // this.subscription = this.mySplitEl.dragProgress$.subscribe(data => {
+    //     console.log(`${ formatDate(new Date()) } > dragProgress$ observable emitted but current component change detection didn't runned!`, data);
+    // })
+}
 
   constructor(private viewService: ViewsService ) {
  
   }
 
   ngOnInit() {
-
    }
 
    disabledEnabledParticipants($event: boolean) {
     this.action.isVisibleParticipants = $event
-  }
+  };
 
   disabledEnabledPlanning($event: boolean) {
     this.action.isVisiblePlanningBoard = $event
-  }
+  };
 
   disabledEnabledPropertyInspector($event: boolean) {
     this.action.isVisiblePropertyInspector = $event
-  }
+  };
 
   disabledEnabledSpectrumDisplay($event: boolean) {
     this.action.isVisibleSpectrumDisplay = $event
-  }
+  };
 
- 
+  gutterClick(e: {gutterNum: number, sizes: Array<number>}) {
+    if(e.gutterNum === 1) {
+        if(this.action.isVisibleParticipantsSize > 0) {
+          console.log('first if: '+ this.action.isVisiblePlanningBoardSize);
+            this.action.isVisiblePlanningBoardSize += this.action.isVisibleParticipantsSize;
+            this.action.isVisibleParticipantsSize = 0;
+        }
+        else if(this.action.isVisiblePlanningBoardSize > 15) {
+            this.action.isVisiblePlanningBoardSize -= 15;
+            this.action.isVisibleParticipantsSize = 15;
+        }
+        else {
+            this.action.isVisibleParticipantsSize = 15;
+            this.action.isVisiblePlanningBoardSize = 70;
+            this.action.isVisiblePropertyInspectorSize = 15;
+        }
+    }
+    else if(e.gutterNum === 2) {
+        if(this.action.isVisiblePropertyInspectorSize > 0) {
+            this.action.isVisiblePlanningBoardSize += this.action.isVisiblePropertyInspectorSize;
+            this.action.isVisiblePropertyInspectorSize = 0;
+        }
+        else if(this.action.isVisiblePlanningBoardSize > 15) {
+            this.action.isVisiblePlanningBoardSize -= 15;
+            this.action.isVisiblePropertyInspectorSize = 15;
+        }
+        else {
+            this.action.isVisibleParticipantsSize = 15;
+            this.action.isVisiblePlanningBoardSize = 70;
+            this.action.isVisiblePropertyInspectorSize = 15;
+        }
+    }
+  };
 
+  dragEnd(e: {gutterNum: number, sizes: Array<number>}) {
+
+    this.action.isVisibleParticipantsSize = e.sizes[0];
+
+    this.action.isVisiblePlanningBoardSize = e.sizes[1];
+
+    this.action.isVisiblePropertyInspectorSize = e.sizes[2];
+
+}
+
+  ngOnDestroy() {
+    if(this.subscription) this.subscription.unsubscribe();
+}
    
 }

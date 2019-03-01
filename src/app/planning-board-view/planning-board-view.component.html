@@ -26,7 +26,7 @@
 
 
 <div class="card" style="width: 18rem;">
-    <div class="card-body">
+  <div class="card-body">
         <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
             <h5 class="card-title">Setting</h5>
             <button type="button" class="close" aria-label="Close" (click)="_toggleOpened()">
@@ -36,65 +36,108 @@
         <br>
         <hr>
       
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" 
-        data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
-            General
-          </button>
-       
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" 
+        data-target="#general" aria-expanded="false" aria-controls="general">General</button>
         <br>
-        <div class="collapse" id="collapseExample">
-            <div class="container">
+        <div class="collapse" id="general">
+            <div class="container-fluid">
                
-            <label for="Lines">Lines</label>
-            <div class="input-group">
-                <label class="radio-inline"><input type="radio" name="optradio" checked>EMI</label>
-                <label class="radio-inline"><input type="radio" name="optradio">Net Connectivity</label>
-                <label class="radio-inline"><input type="radio" name="optradio">None</label>
-            </div>
-          
+            <label for="Lines" class="ml-1">Lines</label>
+              <div class="input-group ml-1 p-1">
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="optradio" checked>EMI</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="optradio">Net Connectivity</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="optradio">None</label>
+              </div>
+            <label for="Sources" class="ml-1">Preferred Map Source</label>
+              <div class="input-group ml-1 p-1">
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="local">Local</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="remote" checked>Remote</label>
+              </div>
             </div>
         </div>
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Layers</button>
-        <br>
 
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#layers" 
+        aria-expanded="false" aria-controls="layers">Layers</button>
+        <br>
+        <div class="collapse clearfix" id="layers">
+         <div class="float-right p-1">
+            <label class="mr-2"> Maneuvering Board 
+              <span class="ml-5 mr-2">
+              <input
+              data-size="small" 
+              data-onstyle="primary" 
+              checked
+              data-offstyle="danger"
+              type="checkbox"
+              data-toggle="toggle">
+            </span>
+          </label>
+        </div>
+        <div class="float-right p-1">
+          <label class="mr-2"> PIM Tracks 
+              <span class="ml-5 mr-2">
+              <input
+              data-size="small" 
+              data-onstyle="primary" 
+              checked
+              data-offstyle="danger"
+              type="checkbox"
+              data-toggle="toggle">
+              </span>
+          </label>
+        </div>
+        <div class="float-right p-1">
+          <label class="mr-2"> Restrictions 
+              <span class="ml-5 mr-2">
+              <input 
+              data-size="small" 
+              data-onstyle="primary" 
+              checked
+              data-offstyle="danger"
+              type="checkbox"
+              data-toggle="toggle">
+              </span>
+          </label>
+        </div>  
+        </div>
+
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Restrictions Filter</button>
         <br>
 
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Markers Filter</button>
         <br>
 
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
         <br>
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
         <br> 
-        <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
         <br>
-         <button class="btn btn-light dropdown-toggle" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
+         <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
         aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
         <br>
-    </div>
   </div>
+</div>
 </ng-sidebar>
 <div ng-sidebar-content>
 <header class="demo-header">
   <button (click)="_toggleOpened()" class="demo-header__toggle">Toggle sidebar</button>
-  <span>ng-sidebar</span>
+  <span>COP-Setting</span>
 </header>
 
 <section class="demo-contents">
 
-    <div class="container">
+    <div class="container-EsriMap">
         <esri-map [mapProperties]="mapProperties" [mapViewProperties]="mapViewProperties" (mapInit)="onMapInit($event)"></esri-map>
     </div>
       
-    <img esriCustomWidget position="bottom-right" src="https://images.forbes.com/media/lists/companies/esri_416x416.jpg" width="100">
-    <esri-layers-toggle position="top-right"></esri-layers-toggle>
+    <!-- <img esriCustomWidget position="bottom-right" src="https://images.forbes.com/media/lists/companies/esri_416x416.jpg" width="100"> -->
+    <!-- <esri-layers-toggle position="top-right"></esri-layers-toggle> -->
 
   <!-- <div>
     <button class="demo-control" (click)="_toggleOpened()">opened ({{_opened}})</button>

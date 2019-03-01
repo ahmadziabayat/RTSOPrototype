@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
 import { EsriModuleProvider } from 'angular-esri-components';
-
 
 
 @Component({
@@ -31,17 +29,19 @@ export class PlanningBoardViewComponent implements OnInit {
   private _MODES: Array<string> = ['over', 'push', 'slide'];
   private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
 
+  
+  map: __esri.Map;
+  mapView: __esri.MapView;
+
   mapProperties: __esri.MapProperties = {
-    basemap: 'dark-gray'
+    basemap: 'hybrid'
   };
 
   mapViewProperties: __esri.MapViewProperties = {
     center: [-118, 34.5],
-    zoom: 8
+    zoom: 7
   };
 
-  map: __esri.Map;
-  mapView: __esri.MapView;
 
   constructor(private moduleProvider: EsriModuleProvider) { }
 
@@ -50,9 +50,12 @@ export class PlanningBoardViewComponent implements OnInit {
     this.mapView = mapInfo.mapView;
     // add a layer with sublayers to map
     this.moduleProvider
-      .require(['esri/layers/MapImageLayer'])
+      .require([ "esri/Map",
+      "esri/views/MapView",
+      "esri/Graphic", 
+      "esri/layers/MapImageLayer"])
       .then(
-        ([MapImageLayer]) => {
+        ([Map, MapView, Graphic, MapImageLayer]) => {
           const layer = new MapImageLayer({
             url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer',
             sublayers: [
@@ -64,17 +67,17 @@ export class PlanningBoardViewComponent implements OnInit {
               {
                 id: 2,
                 title: 'Railroads',
-                visible: true
+                visible: false
               },
               {
                 id: 1,
                 title: 'Highways',
-                visible: true
+                visible: false
               },
               {
                 id: 0,
                 title: 'Cities',
-                visible: true
+                visible: false
 
               }
             ]
