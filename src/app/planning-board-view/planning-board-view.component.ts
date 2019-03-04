@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EsriModuleProvider } from 'angular-esri-components';
+import { mapChildrenIntoArray } from '@angular/router/src/url_tree';
 
 
 @Component({
@@ -33,13 +34,19 @@ export class PlanningBoardViewComponent implements OnInit {
   map: __esri.Map;
   mapView: __esri.MapView;
 
+
+
   mapProperties: __esri.MapProperties = {
     basemap: 'hybrid'
   };
 
   mapViewProperties: __esri.MapViewProperties = {
     center: [-118, 34.5],
-    zoom: 7
+    zoom: 7,
+    constraints : {
+        minZoom: 3,
+    }
+  
   };
 
 
@@ -58,6 +65,7 @@ export class PlanningBoardViewComponent implements OnInit {
         ([Map, MapView, Graphic, MapImageLayer]) => {
           const layer = new MapImageLayer({
             url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer',
+          
             sublayers: [
               {
                 id: 3,
@@ -83,9 +91,7 @@ export class PlanningBoardViewComponent implements OnInit {
             ]
           });
           this.map.layers.add(layer);
-
         });
-
   }
 
  

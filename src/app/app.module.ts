@@ -21,6 +21,7 @@ import { CopNavbarComponent } from './cop-navbar/cop-navbar.component';
 
 import { AngularEsriModule } from 'angular-esri-components';
 
+import { TreeModule } from 'angular-tree-component'; // an angular treeview component
 
 import { ViewsService } from './views.service';
 
@@ -46,6 +47,7 @@ import { ViewsService } from './views.service';
     AngularEsriModule,
     SidebarModule.forRoot(),
     AngularSplitModule.forRoot(),
+    TreeModule.forRoot()
     
   ],
   providers: [ViewsService],

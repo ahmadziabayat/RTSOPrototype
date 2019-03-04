@@ -3,17 +3,16 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
 @import 'utils/variables';
 @import 'utils/core';
+@import '~angular-tree-component/dist/angular-tree-component.css';
 
 
 html, body {
 
-  font-family: 'Roboto', sans-serif;
-
+  font-family: 'Roboto', 'sans-serif';
   height: 100%;
-
-  margin: 2px;
-
-  padding: 2px;
+  margin: 1px;
+  padding: 1px;
+  color: white;
 
 }
 
@@ -25,3 +24,5 @@ app-planning-board-view {
   height: 100%;
   width: 100%;
 }
+
+

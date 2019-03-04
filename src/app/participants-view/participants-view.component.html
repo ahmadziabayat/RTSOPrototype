@@ -1,1 +1,22 @@
-<p>participants view</p>
+<ul class="nav nav-pills mb-3" id="participantsViewTabs" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="participants-tab" data-toggle="tab" href="#participants" role="tab" aria-controls="participants" aria-selected="true">Participants</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="netPlan-tab" data-toggle="tab" href="#netPlan" role="tab" aria-controls="netPlan" aria-selected="false">Net Plan</a>
+    </li>
+
+  </ul>
+  <div class="tab-content" id="participantsViewContent">
+    <div class="tab-pane fade show active" id="participants" role="tabpanel" aria-labelledby="participants-tab">
+            <tree-root [nodes]="nodes"  [focused]="true" [options]="options"></tree-root></div>
+    <div class="tab-pane fade" id="netPlan" role="tabpanel" aria-labelledby="netPlan-tab">
+        Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation +1 labore velit, 
+        blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table craft beer twee. Qui photo booth letterpress, 
+        commodo enim craft beer mlkshk aliquip jean shorts ullamco ad vinyl cillum PBR. Homo nostrud organic, 
+        assumenda labore aesthetic magna delectus mollit. Keytar helvetica VHS salvia yr, 
+        vero magna velit sapiente labore stumptown. Vegan fanny pack odio cillum wes anderson 8-bit, 
+        sustainable jean shorts beard ut DIY ethical culpa terry richardson biodiesel. 
+        Art party scenester stumptown, tumblr butcher vero sint qui sapiente accusamus tattooed echo park.</div>
+ 
+  </div>
