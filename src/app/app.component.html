@@ -1,9 +1,3 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<!-- <div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-</div> -->
 
 <app-menu-bar  (visibleParticipant)="disabledEnabledParticipants($event)"
                (visiblePlanningBoard)="disabledEnabledPlanning($event)"
@@ -13,10 +7,9 @@
 </app-menu-bar>
 
 
-
   <as-split direction="vertical" gutterSize="10">
    
-    <as-split-area [size]="action.isVisibleMainDisplaySize" class="bg-info text-dark">
+    <as-split-area [size]="action.isVisibleMainDisplaySize" class="bg-dark text-light">
         <as-split gutterSize="10" direction="horizontal" [useTransition]="action.useTransition" (dragEnd)="dragEnd($event)" (gutterClick)="gutterClick( $event)">
               <as-split-area  [visible]="action.isVisibleParticipants" [size]="action.isVisibleParticipantsSize" [order]="action.ParticipantsOrder" >
                   <as-split direction="vertical" [useTransition]="true">
@@ -45,25 +38,5 @@
 
     </as-split> <!--end of vertical direction-->
 
-
-    <!-- <div class="btns">
-      <div class="btn-group">
-          <label class="btn btn-warning" 
-              [class.active]="!action.isVisibleParticipants" 
-              (click)="action.isVisibleParticipants = !action.isVisibleParticipants">{{ 'Participants: ' + action.isVisibleParticipants }}</label>
-          <label class="btn btn-warning" 
-              [class.active]="!action.isVisiblePlanningBoard" 
-              (click)="action.isVisiblePlanningBoard = !action.isVisiblePlanningBoard">{{ 'PlanningBoard: ' + action.isVisiblePlanningBoard }}</label>
-          <label class="btn btn-warning" 
-              [class.active]="!action.isVisiblePropertyInspector" 
-              (click)="action.isVisiblePropertyInspector = !action.isVisiblePropertyInspector">{{ 'PropertyInspector: ' + action.isVisiblePropertyInspector }}</label>
-          <label class="btn btn-warning" 
-              [class.active]="!action.isVisibleSpectrumDisplay" 
-              (click)="action.isVisibleSpectrumDisplay = !action.isVisibleSpectrumDisplay">{{ 'SpectrumDisplay: ' + action.isVisibleSpectrumDisplay }}</label>
-              <label class="btn btn-warning" 
-              
-              (click)="toggleParticipants()">button</label>
-      </div>
-  </div> -->
 
 <router-outlet></router-outlet>

@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-component';
+import { HttpClient } from '@angular/common/http';
+import { map } from "rxjs/operators";
 
 @Component({
   selector: 'app-participants-view',
@@ -8,10 +10,66 @@ import { TREE_ACTIONS, KEYS, IActionMapping, ITreeOptions } from 'angular-tree-c
 })
 export class ParticipantsViewComponent implements OnInit {
 
-  constructor() { }
+  private gridApi;
+  private gridColumnApi;
+
+  private columnDefs;
+  private defaultColDef;
+  private rowData: any;
+  private domLayout;
+
+  style = {
+    marginTop: '20px',
+    width: '600px',
+    height: '600px',
+    boxSizing: 'border-box'
+};
+
+@ViewChild('agGrid') agGrid;
+
+
+
+  constructor(private http: HttpClient) {
+    this.columnDefs = [
+      {headerName: 'Make', field: 'make',checkboxSelection: true},
+      {headerName: 'Model', field: 'model'},
+      {headerName: 'Price', field: 'price'}
+  ];
+  this.defaultColDef = 
+  {
+    resizable: true,
+    enableRowGroup: true,
+    enableValue: true,
+    filter: true,
+    sortable: true,
+  };
+
+   };
+
+   onFirstDataRendered(params) {
+    params.api.sizeColumnsToFit();
+    };
+
+   onGridReady(params) {
+    this.gridApi = params.api;
+    this.gridColumnApi = params.columnApi;
+  
+    this.http
+      .get("assets/vehicles.json")
+      .subscribe(data => {
+        this.rowData = data;
+      });
+      
+  }
 
   ngOnInit() {
+    // this.rowData = this.http.get('assets/vehicles.json');
   }
+
+
+
+
+
 
 
   nodes = [

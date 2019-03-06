@@ -25,7 +25,7 @@
       (onTransitionEnd)="_onTransitionEnd()">
 
 
-<div class="card" style="width: 18rem;">
+<div class="card text-dark" style="width: 18rem;">
   <div class="card-body">
         <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
             <h5 class="card-title">Setting</h5>
@@ -44,14 +44,14 @@
                
             <label for="Lines" class="ml-1">Lines</label>
               <div class="input-group ml-1 p-1">
-                  <label class="radio-inline"><input type="radio" class="ml-3" name="optradio" checked>EMI</label>
-                  <label class="radio-inline"><input type="radio" class="ml-3" name="optradio">Net Connectivity</label>
-                  <label class="radio-inline"><input type="radio" class="ml-3" name="optradio">None</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="lines" checked>EMI</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="lines">Net Connectivity</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="lines">None</label>
               </div>
-            <label for="Sources" class="ml-1">Preferred Map Source</label>
+            <label for="Preferred Map Source" class="ml-1">Preferred Map Source</label>
               <div class="input-group ml-1 p-1">
-                  <label class="radio-inline"><input type="radio" class="ml-3" name="local">Local</label>
-                  <label class="radio-inline"><input type="radio" class="ml-3" name="remote" checked>Remote</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="source">Local</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="source" checked>Remote</label>
               </div>
             </div>
         </div>
@@ -98,29 +98,76 @@
               data-toggle="toggle">
               </span>
           </label>
-        </div>  
+        </div>
+        <div class="float-right p-1">
+            <label class="mr-2"> Fleet AORs
+                <span class="ml-5 mr-2">
+                <input 
+                data-size="small" 
+                data-onstyle="primary" 
+                checked
+                data-offstyle="danger"
+                type="checkbox"
+                data-toggle="toggle">
+                </span>
+            </label>
+          </div>    
         </div>
 
-        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Restrictions Filter</button>
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#Restrictions" 
+        aria-expanded="false" aria-controls="Restrictions">Restrictions Filter</button>
+        <br>
+        <div class="collapse clearfix" id="Restrictions">
+            <div class="float-left p-1">
+               <label class=""> Color
+                 <span class="ml-1 mr-1">
+                 <input 
+                 [value]="color"
+                 [style.background]="color"
+                 [cpPosition]="'bottom'"
+                 [cpPositionRelativeToArrow]="true"
+                 [cpOKButton]="true"
+                 [cpSaveClickOutside]="false"
+                 [cpOKButtonClass]= "'btn btn-primary btn-xs'"
+                 [(colorPicker)]="color"/>
+               </span>
+             </label>
+           </div>
+          </div>
+
+        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" 
+        data-target="#symbols" 
+        aria-expanded="false" aria-controls="Symbols">Symbols</button>
         <br>
 
-        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Markers Filter</button>
-        <br>
+        <div class="collapse" id="symbols">
+            <div class="container-fluid">
+               
+            <label for="Labels" class="ml-1">Labels</label>
+              <div class="input-group ml-1 p-1">
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolLabel" checked>Off</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolLabel">Short</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolLabel">Full</label>
+              </div>
+            <label for="Sizes" class="ml-1">Sizes</label>
+              <div class="input-group ml-1 p-1">
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolSize">XS</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolSize" checked>S</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolSize">M</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolSize">L</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbolSize">XL</label>
+                  
+              </div>
+              <label for="Strike Group Symbology" class="ml-1">Strike Group Symbology</label>
+              <div class="input-group ml-1 p-1">
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbology" checked>Expand</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbology">Collapse</label>
+                  <label class="radio-inline"><input type="radio" class="ml-3" name="symbology">Auto</label>
+              </div>
+            </div>
+        </div>
 
-        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
-        <br>
-        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
-        <br> 
-        <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
-        <br>
-         <button class="btn btn-light dropdown-toggle ml-1" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" 
-        aria-expanded="false" aria-controls="multiCollapseExample2">Advance</button>
-        <br>
+     
   </div>
 </div>
 </ng-sidebar>

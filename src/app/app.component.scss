@@ -1,0 +1,33 @@
+as-split.is-transition.is-init:not(.is-dragging) ::ng-deep > .as-split-gutter,
+as-split.is-transition.is-init:not(.is-dragging) > .as-split-area {
+    transition: flex-basis 1.5s !important;
+}
+as-split.is-disabled ::ng-deep > .as-split-gutter {
+    cursor: pointer !important;
+}
+
+.btns {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+.btns > div {
+    flex: 1 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.btns > div > button {
+    margin-bottom: 10px;
+}
+.logs > p {
+    margin-bottom: 5px;
+}
+.logs > ul {
+    height: 200px;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    border: 1px solid #bfbfbf;
+    background-color: #e8e8e8;
+}

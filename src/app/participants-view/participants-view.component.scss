@@ -92,3 +92,8 @@ div.tree>tree-node>div::before {
 div.tree>tree-node>div>.node-wrapper>tree-node-expander>.toggle-children-wrapper {
     left: 22px
 }
+
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus{
+    background-color:black;
+    color:red;
+    }

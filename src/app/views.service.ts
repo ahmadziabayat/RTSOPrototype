@@ -11,8 +11,8 @@ export class ViewsService {
    isVisibleParticipantsSize: 15, isVisibleParticipants: true, ParticipantsOrder : 0 ,
    isVisiblePlanningBoardSize: 70,  isVisiblePlanningBoard: true, PlanningOrder : 1, 
    isVisiblePropertyInspectorSize: 15,     isVisiblePropertyInspector: true, InspectorOrder:2,
-   isVisibleSpectrumDisplaySize: 20, isVisibleSpectrumDisplay: true, SpectrumOrder: 3,
-   isVisibleMainDisplaySize: 80,
+   isVisibleSpectrumDisplaySize: 25, isVisibleSpectrumDisplay: true, SpectrumOrder: 3,
+   isVisibleMainDisplaySize: 75,
     
     useTransition: true,
     logs: ''

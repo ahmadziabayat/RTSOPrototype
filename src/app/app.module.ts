@@ -18,10 +18,15 @@ import { PropertyInspectorComponent } from './property-inspector/property-inspec
 import { SpectrumDisplayViewComponent } from './spectrum-display-view/spectrum-display-view.component';
 import { StatusBarComponent } from './status-bar/status-bar.component';
 import { CopNavbarComponent } from './cop-navbar/cop-navbar.component';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AngularEsriModule } from 'angular-esri-components';
 
 import { TreeModule } from 'angular-tree-component'; // an angular treeview component
+
+import { PlotlyModule } from 'angular-plotly.js'; // an angular plotly.js component
+import { AgGridModule } from 'ag-grid-angular'; // for showing data in the table
+import { ColorPickerModule } from 'ngx-color-picker'; // angular color picker
 
 import { ViewsService } from './views.service';
 
@@ -47,7 +52,11 @@ import { ViewsService } from './views.service';
     AngularEsriModule,
     SidebarModule.forRoot(),
     AngularSplitModule.forRoot(),
-    TreeModule.forRoot()
+    TreeModule.forRoot(),
+    PlotlyModule,
+    AgGridModule.withComponents([]),
+    HttpClientModule,
+    ColorPickerModule
     
   ],
   providers: [ViewsService],
