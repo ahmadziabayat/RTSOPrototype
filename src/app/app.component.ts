@@ -99,14 +99,30 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
             this.action.isVisiblePropertyInspectorSize = 15;
         }
     }
+
   };
 
+  gutterClickPlanningSpectrum(e: {gutterNum: number, sizes: Array<number>}){
+    
+      if(this.action.isVisibleSpectrumDisplaySize > 0) {
+          this.action.PlanningSizeWithSpectrum += this.action.isVisibleSpectrumDisplaySize;
+          this.action.isVisibleSpectrumDisplaySize = 0;
+      }
+      else if(this.action.PlanningSizeWithSpectrum > 30) {
+          this.action.PlanningSizeWithSpectrum -= 30;
+          this.action.isVisibleSpectrumDisplaySize = 30;
+      }
+      else {
+          this.action.isVisibleSpectrumDisplaySize = 30;
+          this.action.PlanningSizeWithSpectrum = 70;
+        
+      }
+  
+  };
   dragEnd(e: {gutterNum: number, sizes: Array<number>}) {
 
     this.action.isVisibleParticipantsSize = e.sizes[0];
-
     this.action.isVisiblePlanningBoardSize = e.sizes[1];
-
     this.action.isVisiblePropertyInspectorSize = e.sizes[2];
 
 }

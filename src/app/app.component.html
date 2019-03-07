@@ -7,36 +7,36 @@
 </app-menu-bar>
 
 
-  <as-split direction="vertical" gutterSize="10">
-   
+    <as-split direction="horizontal" gutterSize="10">
+
     <as-split-area [size]="action.isVisibleMainDisplaySize" class="bg-dark text-light">
         <as-split gutterSize="10" direction="horizontal" [useTransition]="action.useTransition" (dragEnd)="dragEnd($event)" (gutterClick)="gutterClick( $event)">
               <as-split-area  [visible]="action.isVisibleParticipants" [size]="action.isVisibleParticipantsSize" [order]="action.ParticipantsOrder" >
-                  <as-split direction="vertical" [useTransition]="true">
+                  <as-split direction="horizontal" [useTransition]="true">
                      <app-participants-view></app-participants-view>
                   </as-split>
               </as-split-area>
                           
               <as-split-area  [visible]="action.isVisiblePlanningBoard" [order]="action.PlanningOrder"  [size]="action.isVisiblePlanningBoardSize">                        
-                <as-split direction="vertical" [useTransition]="true"> 
-                    <app-planning-board-view></app-planning-board-view>
-              </as-split>                                           
+                <as-split direction="vertical" gutterSize="10" [useTransition]="action.useTransition" (gutterClick)="gutterClickPlanningSpectrum($event)">
+                  <as-split-area [visible]="action.isVisiblePlanningBoard" [order]="0" [size]="action.PlanningSizeWithSpectrum">                    
+                      <app-planning-board-view></app-planning-board-view>
+                  </as-split-area>
+                 
+                  <as-split-area [visible]="action.isVisibleSpectrumDisplay" [order]="1" [size]="action.isVisibleSpectrumDisplaySize">                        
+                      <app-spectrum-display-view></app-spectrum-display-view>                     
+                  </as-split-area>               
+                </as-split>                                      
               </as-split-area>
 
               <as-split-area [visible]="action.isVisiblePropertyInspector" [order]="action.InspectorOrder" [size]="action.isVisiblePropertyInspectorSize">
-                  <as-split direction="vertical" [useTransition]="true">
+                  <as-split direction="horizontal" [useTransition]="true">
                       <app-property-inspector></app-property-inspector>
                   </as-split>
               </as-split-area>                    
         </as-split>
     </as-split-area> <!--end of split area for 80% of page-->
- 
-    <!--Splite area for Inspectrum -->
-    <as-split-area class="bg-info text-dark" [visible]="action.isVisibleSpectrumDisplay" [order]="action.SpectrumOrder" [size]="action.isVisibleSpectrumDisplaySize"> 
-      <app-spectrum-display-view></app-spectrum-display-view>
-    </as-split-area>
-
-    </as-split> <!--end of vertical direction-->
+    </as-split>
 
 
 <router-outlet></router-outlet>

@@ -9,10 +9,10 @@ export class ViewsService {
   
   action = {
    isVisibleParticipantsSize: 15, isVisibleParticipants: true, ParticipantsOrder : 0 ,
-   isVisiblePlanningBoardSize: 70,  isVisiblePlanningBoard: true, PlanningOrder : 1, 
+   isVisiblePlanningBoardSize: 70, PlanningSizeWithSpectrum: 70,  isVisiblePlanningBoard: true, PlanningOrder : 1, 
    isVisiblePropertyInspectorSize: 15,     isVisiblePropertyInspector: true, InspectorOrder:2,
-   isVisibleSpectrumDisplaySize: 25, isVisibleSpectrumDisplay: true, SpectrumOrder: 3,
-   isVisibleMainDisplaySize: 75,
+   isVisibleSpectrumDisplaySize: 30, isVisibleSpectrumDisplay: true, SpectrumOrder: 3,
+   isVisibleMainDisplaySize: 100,
     
     useTransition: true,
     logs: ''
