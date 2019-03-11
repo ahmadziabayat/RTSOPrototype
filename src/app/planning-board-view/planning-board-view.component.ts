@@ -33,64 +33,109 @@ export class PlanningBoardViewComponent implements OnInit {
   
   map: __esri.Map;
   mapView: __esri.MapView;
+  view: __esri.View;
+  layerView: __esri.LayerView;
 
 
 
   mapProperties: __esri.MapProperties = {
-    basemap: 'hybrid'
+    basemap: 'hybrid',
+    ground: "world-elevation"
   };
+
+
 
   mapViewProperties: __esri.MapViewProperties = {
     center: [-118, 34.5],
     zoom: 7,
     constraints : {
         minZoom: 3,
-    }
+    },
+    // highlightOptions: {
+    //   color: [255, 255, 0, 1],
+    //   haloOpacity: 0.9,
+    //   fillOpacity: 0.8
+    // },
+    // viewpoint:{
+    //   camera:{
+    //     heading: 90, // face due east
+    //     tilt: 45, // looking from a bird's eye view
+    //     position: {
+    //       latitude: 38,
+    //       longitude: -122,
+    //       spatialReference: { wkid: 3857 }
+    //     }
+    //   }
+    // }
   
   };
+  
+ 
 
 
   constructor(private moduleProvider: EsriModuleProvider) { }
 
-  onMapInit(mapInfo: {map: __esri.Map, mapView: __esri.MapView}) {
+  onMapInit(mapInfo: {map: __esri.Map, mapView: __esri.MapView, view: __esri.View, layerView: __esri.LayerView}) {
     this.map = mapInfo.map;
     this.mapView = mapInfo.mapView;
+    this.view = mapInfo.view;
+    this.layerView = mapInfo.layerView;
+
     // add a layer with sublayers to map
     this.moduleProvider
       .require([ "esri/Map",
+      "esri/WebMap",
       "esri/views/MapView",
       "esri/Graphic", 
-      "esri/layers/MapImageLayer"])
+      "esri/layers/MapImageLayer",
+      "esri/views/SceneView",
+      "esri/views/3d/externalRenderers"])
       .then(
-        ([Map, MapView, Graphic, MapImageLayer]) => {
+        ([Map, WebMap, MapView, Graphic, MapImageLayer, SceneView, externalRenderers]) => {
+
           const layer = new MapImageLayer({
             url: 'https://sampleserver6.arcgisonline.com/arcgis/rest/services/USA/MapServer',
+        
           
-            sublayers: [
-              {
-                id: 3,
-                title: 'States',
-                visible: false
-              },
-              {
-                id: 2,
-                title: 'Railroads',
-                visible: false
-              },
-              {
-                id: 1,
-                title: 'Highways',
-                visible: false
-              },
-              {
-                id: 0,
-                title: 'Cities',
-                visible: false
-
-              }
-            ]
+            sublayers:  [{
+              id: 2,
+              // labelingInfo autocasts to an array of LabelClass objects
+              // this sublayer has two label classes. The first sets the
+              // label as the state abbreviation at small scales. When the view
+              // zooms to larger scales the whole state name is used instead
+              labelingInfo: [{
+                labelExpression: "[state_abbr]",
+                labelPlacement: "always-horizontal",
+                symbol: {
+                  type: "text",  // autocasts as new TextSymbol()
+                  color: [ 255,255,255,0.85 ],
+                  font: {
+                    size: 16,
+                    weight: "bolder"
+                  }
+                },
+                minScale: 18500000,
+                maxScale: 9250000
+              }, {
+                labelExpression: "[state_name]",
+                labelPlacement: "always-horizontal",
+                symbol: {
+                  type: "text",  // autocasts as new TextSymbol()
+                  color: [ 255,255,255,0.85 ],
+                  haloColor: "gray",
+                  haloSize: 1,
+                  font: {
+                    size: 14,
+                    weight: "bold"
+                  }
+                },
+                minScale: 9250000,
+                maxScale: 2400000
+              }]
+            }]
           });
           this.map.layers.add(layer);
+          // this.map.add(webmap);
         });
   }
 
