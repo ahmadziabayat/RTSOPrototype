@@ -70,7 +70,6 @@ export class AppComponent implements OnInit, AfterViewInit, OnDestroy {
   gutterClick(e: {gutterNum: number, sizes: Array<number>}) {
     if(e.gutterNum === 1) {
         if(this.action.isVisibleParticipantsSize > 0) {
-          console.log('first if: '+ this.action.isVisiblePlanningBoardSize);
             this.action.isVisiblePlanningBoardSize += this.action.isVisibleParticipantsSize;
             this.action.isVisibleParticipantsSize = 0;
         }
