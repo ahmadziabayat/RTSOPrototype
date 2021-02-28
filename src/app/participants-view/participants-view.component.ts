@@ -31,20 +31,18 @@ export class ParticipantsViewComponent implements OnInit {
 
   constructor(private http: HttpClient) {
     this.columnDefs = [
-      {headerName: 'Make', field: 'make',checkboxSelection: true},
+      {headerName: 'Make', field: 'make', checkboxSelection: true},
       {headerName: 'Model', field: 'model'},
       {headerName: 'Price', field: 'price'}
   ];
-  this.defaultColDef = 
-  {
+  this.defaultColDef = {
     resizable: true,
     enableRowGroup: true,
     enableValue: true,
     filter: true,
     sortable: true,
   };
-
-   };
+   }
 
    onFirstDataRendered(params) {
     params.api.sizeColumnsToFit();
@@ -53,13 +51,13 @@ export class ParticipantsViewComponent implements OnInit {
    onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
-  
+
     this.http
       .get("assets/vehicles.json")
       .subscribe(data => {
         this.rowData = data;
       });
-      
+
   }
 
   ngOnInit() {
@@ -85,7 +83,7 @@ export class ParticipantsViewComponent implements OnInit {
       ] },
         { id: 3, name: 'Communication Systems',
       children: [
-        {id: 20, name:'Net Hosts'},
+        {id: 20, name: 'Net Hosts'},
         {id: 21, name: 'Non-Net Hosts'}
       ] },
         {id: 4, name: 'NAVAIDs',

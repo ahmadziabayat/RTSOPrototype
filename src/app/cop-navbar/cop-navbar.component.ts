@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./cop-navbar.component.scss']
 })
 export class CopNavbarComponent implements OnInit {
-  
+
 
   constructor( ) { }
 
@@ -31,7 +31,6 @@ export class CopNavbarComponent implements OnInit {
   private _MODES: Array<string> = ['over', 'push', 'slide'];
   private _POSITIONS: Array<string> = ['left', 'right', 'top', 'bottom'];
 
-  
   public _toggleOpened(): void {
     this._opened = !this._opened;
   }
